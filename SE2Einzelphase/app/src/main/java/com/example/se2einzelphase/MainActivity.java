@@ -11,11 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,13 +68,17 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 //                    Establish the connection to the server by creating a socket
+                    Socket socket = null;
                     try {
-                        Socket socket = new Socket(serverName, portNr);
+                        socket = new Socket(serverName, portNr);
                         Log.v("Connected", socket.getRemoteSocketAddress().toString());
 
-//                        Sending data to server
+                        // Get output stream from the socket
                         PrintWriter toServer = new PrintWriter(socket.getOutputStream(), true);
                         toServer.println(matNr);
+
+                        // Send data
+                        Log.v("MatNrStr", String.valueOf(matNr));
 
 //                        Reading the data from the server
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -92,9 +99,18 @@ public class MainActivity extends AppCompatActivity {
 
                     } catch (IOException e) {
                         throw new RuntimeException(e);
+                    } finally {
+                        // Close the socket in the finally block to ensure it's always closed
+                        if (socket != null) {
+                            try {
+                                socket.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 }
-            });
+            }).start();
 
         }
 

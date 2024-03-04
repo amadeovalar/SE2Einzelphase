@@ -22,8 +22,8 @@
         android:layout_width="255dp"
         android:layout_height="53dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/MatrikelNummerPlaceholder"
+        android:inputType="number"
+        android:hint="@string/MatrikelNummerPlaceholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -33,22 +33,22 @@
 
     <TextView
         android:id="@+id/serverAntwort"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="278dp"
+        android:layout_height="76dp"
         android:text="@string/ServerAntwortLabel"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/matrikelNummerInput"
-        app:layout_constraintVertical_bias="0.134"
-        android:visibility="invisible"/>
+        app:layout_constraintVertical_bias="0.134" />
 
     <Button
         android:id="@+id/btnAbschicken"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ButtonLabelBerechnen"
+        android:onClick="onClickSubmit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
