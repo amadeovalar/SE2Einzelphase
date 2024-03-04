@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SE2Einzelphase</string>
+
+    <string name="MatrikelNummerLabel">Gib deine Matrikelnummer ein!</string>
+    <string name="MatrikelNummerPlaceholder">Matrikelnummer</string>
+
+    <string name="ServerAntwortLabel">Antwort vom Server</string>
+
+    <string name="ButtonLabelBerechnen">Berechnen</string>
+
 </resources>
