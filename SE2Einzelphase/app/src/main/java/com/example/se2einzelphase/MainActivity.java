@@ -127,14 +127,11 @@ public class MainActivity extends AppCompatActivity {
                 String binaryArray = binaryConverter.convertSumToBinary(matNr);
 
                 // Print the result
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //                                Turning text to visible
-                        messageFromServer.setVisibility(View.VISIBLE);
-                        //                                show the results of the calculation
-                        messageFromServer.setText(binaryArray);
-                    }
+                runOnUiThread(() -> {
+                    //                                Turning text to visible
+                    messageFromServer.setVisibility(View.VISIBLE);
+                    //                                show the results of the calculation
+                    messageFromServer.setText(binaryArray);
                 });
             } catch (Exception e) {
                 throw new RuntimeException(e);
